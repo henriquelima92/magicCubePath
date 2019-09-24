@@ -38,31 +38,47 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public Collider[] detectedColliders;
+
     private void Update()
     {
-        if(IsRotating == false)
+
+        if(Input.GetKeyDown(KeyCode.R))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                StartCoroutine(Rotate(-Vector3.up, RotationTime));
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                StartCoroutine(Rotate(Vector3.up, RotationTime));
-            }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                StartCoroutine(Rotate(Vector3.right, RotationTime));
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                StartCoroutine(Rotate(Vector3.left, RotationTime));
-            }
-        }  
+            detectedColliders = Physics.OverlapBox(Camera.main.transform.position, Vector3.one * 18f);
+        }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(Camera.main.transform.position, Vector3.one * 36f);
+    }
+
+    //private void Update()
+    //{
+    //    if(IsRotating == false)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.RightArrow))
+    //        {
+    //            StartCoroutine(Rotate(-Vector3.up, RotationTime));
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.LeftArrow))
+    //        {
+    //            StartCoroutine(Rotate(Vector3.up, RotationTime));
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.UpArrow))
+    //        {
+    //            StartCoroutine(Rotate(Vector3.right, RotationTime));
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.DownArrow))
+    //        {
+    //            StartCoroutine(Rotate(Vector3.left, RotationTime));
+    //        }
+    //    }  
+    //}
 
     private IEnumerator Rotate(Vector3 direction, float duration)
     {
