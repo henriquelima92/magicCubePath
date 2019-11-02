@@ -5,6 +5,20 @@ public static class GameUtilities
     //public static LayerMask BLOCK_LAYER = LayerMask.NameToLayer("Block");
     public static float BlockMovementTime = 0.5f; 
 
+    public static Vector3 GetMiddlePoint(Vector3 minPosition, Vector3 maxPosition)
+    {
+        return (minPosition + maxPosition) / 2;
+    }
+
+    public static Vector2 GetMiddlePoint(Vector2 minPosition, Vector2 maxPosition)
+    {
+        return (minPosition + maxPosition) / 2;
+    }
+
+    public static float GetMiddlePoint(float minPosition, float maxPosition)
+    {
+        return (minPosition + maxPosition) / 2;
+    }
 
     public static Vector3 Snap(Vector3 pos, int v)
     {
